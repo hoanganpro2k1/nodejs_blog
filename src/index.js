@@ -3,24 +3,24 @@ import { engine } from 'express-handlebars';
 import morgan from 'morgan';
 import route from './routes/index.js';
 
-const app = express()
-const port = 3000
+const app = express();
+const port = 3000;
 
-app.use(express.static('src/public'))
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
+app.use(express.static('src/public'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Routes init
-route(app)
+route(app);
 
 // HTTP logger
-app.use(morgan('combined'))
+app.use(morgan('combined'));
 
 // Template engine
-app.engine('hbs', engine({ extname: '.hbs' }));
-app.set('view engine', 'hbs');
-app.set('views', 'src/resources/views');
+app.engine('hbs', engine({ extname: '.hbs' }))
+app.set('view engine', 'hbs')
+app.set('views', 'src/resources/views')
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  console.log(`Example app listening on port ${port}`);
+});
